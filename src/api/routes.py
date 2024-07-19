@@ -28,6 +28,13 @@ def handle_hello():
 @api.route('/users', methods=['POST'])
 def create_user():
     data = request.json
+    
+    # Verificar si el email ya está registrado
+    existing_user = User.query.filter_by(email=data['email']).first()
+    if existing_user:
+        return jsonify({'error': 'User with this email already exists'}), 400
+    
+    # Crear nuevo usuario si el email no existe
     new_user = User(
         email=data['email'],
         password=data['password'],
@@ -81,6 +88,10 @@ def delete_user(user_id):
     db.session.delete(user)
     db.session.commit()
     return jsonify({'message': 'User deleted'}), 200
+
+    
+
+
 
 
 

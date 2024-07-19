@@ -28,6 +28,8 @@ class FavoriteCharacter(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     character_id = db.Column(db.Integer, nullable=False)
+    name = db.Column(db.String(255), nullable=False)
+    image = db.Column(db.String(255), nullable=True)
     user = db.relationship('User', back_populates='favorite_characters')
 
     def __repr__(self):
@@ -37,5 +39,7 @@ class FavoriteCharacter(db.Model):
         return {
             'id': self.id,
             'user_id': self.user_id,
-            'character_id': self.character_id
+            'character_id': self.character_id,
+            'name':self.name,
+            'image':self.image
         }
