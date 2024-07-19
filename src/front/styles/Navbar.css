@@ -1,0 +1,261 @@
+/* Navbar.css */
+
+/* General Styles */
+.App {
+    font-family: 'Arial', sans-serif;
+}
+
+.navbar {
+    background-color: #343a40; /* Color oscuro para el fondo */
+    padding: 10px;
+    position: relative;
+    margin-left: 125px; /* Ajuste para mover la navbar */
+    margin-top: -20px;
+}
+
+.navbar-main-open {
+    width: 250px;
+    transition: width 0.3s ease-in-out;
+    background-color: white;
+    margin-left: 20px;
+}
+
+.navbar-main-closed {
+    width: 80px;
+    transition: width 0.3s ease-in-out;
+    margin-left: 0px;
+    background-color: white;
+    
+}
+
+.container-fluid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.d-flex {
+    display: flex;
+    align-items: center;
+}
+
+.btn {
+    background: none;
+    border: none;
+    color: #1e90ff; /* Azul eléctrico */
+    cursor: pointer;
+    position: relative;
+    z-index: 1001; /* Asegurar que el botón esté por encima de otros elementos */
+}
+
+.menu-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+ 
+    transition: transform 0.3s ease-in-out;
+    width: 160px;
+    height: 66px;
+    background-color: #343a40;
+    color: white;
+    border: none;
+    border-radius: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1000;
+    margin-left: -30px;
+
+}
+
+.menu-button:hover {
+    background-color: #495057;
+    color: #00ffff; /* Color azul eléctrico */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+}
+
+.menu-button:active {
+    transform: scale(0.95);
+}
+
+
+
+.btn:focus {
+    outline: none;
+}
+
+.fa-solid {
+    color: #1e90ff; /* Azul eléctrico */
+}
+
+/* Ajustes para el icono de menú */
+/* Estilos mejorados para el botón del menú */
+.fa-bars-staggered {
+    position: relative;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.fa-bars-staggered::before {
+    content: "\f550"; /* Código del icono barras */
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: black; /* Color negro para el icono */
+}
+
+.fa-bars-staggered:hover {
+    transform: scale(1.1); /* Efecto de escala al hacer hover */
+}
+
+
+.rick-and-morty {
+    color: #1e90ff; /* Azul eléctrico */
+    margin-left: 20px; /* Ajustar el margen según sea necesario */
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar-content.shifted .menu-button {
+    transform: translateX(170px);
+    margin-top: 1px;
+    margin-left: -6px;
+}
+
+.navbar-content.shifted .rick-and-morty {
+    transform: translateX(170px);
+    
+}
+
+.navbar-title {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Mueve el título hacia la derecha */
+}
+
+/* Sidebar Styles */
+.sidebar {
+    background-color: #1b1b1b; /* Color oscuro para el fondo */
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow-y: auto;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+.sidebar.closed {
+    transform: translateX(-100%);
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.sidebar-header img {
+    cursor: pointer;
+    width: 80px;
+    transition: width 0.3s ease-in-out;
+}
+
+.logo-sidebar-open {
+    width: 150px;
+}
+
+.logo-sidebar-closed {
+    width: 80px;
+}
+
+.sidebar-body {
+    padding: 10px;
+}
+
+.navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    margin: 10px 0;
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-link.active {
+    background-color: #282828; /* Color ligeramente más oscuro para indicar la página activa */
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.nav-link .fa-solid {
+    margin-right: 10px;
+}
+
+.nav-link span {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Button Close */
+.btn-close {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.btn-close:focus {
+    outline: none;
+}
+
+/* Additional styles for responsive behavior */
+@media (max-width: 768px) {
+    .navbar-main-open,
+    .navbar-main-closed {
+        width: 100%;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .menu-button {
+        top: 10px;
+        left: 10px;
+    }
+
+    .navbar-content.shifted .menu-button,
+    .navbar-content.shifted .rick-and-morty {
+        transform: translateX(0);
+    }
+}
