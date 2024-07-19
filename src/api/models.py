@@ -14,7 +14,15 @@ class User(db.Model):
     def __repr__(self):
         return f'<User {self.email}>'
 
-
+    def serialize(self):
+        return {
+            'id': self.id,
+            'email': self.email,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'favorites': self.favorites,
+            'favorite_characters': [fc.serialize() for fc in self.favorite_characters]
+        }
 
 class FavoriteCharacter(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -25,5 +33,9 @@ class FavoriteCharacter(db.Model):
     def __repr__(self):
         return f'<FavoriteCharacter user_id={self.user_id} character_id={self.character_id}>'
 
-
-
+    def serialize(self):
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'character_id': self.character_id
+        }
