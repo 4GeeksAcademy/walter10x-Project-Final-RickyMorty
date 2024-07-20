@@ -5,6 +5,10 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User
 from api.utils import generate_sitemap, APIException
 from flask_cors import CORS
+from flask_jwt_extended import create_access_token
+from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import jwt_required
+from flask_jwt_extended import JWTManager
 
 api = Blueprint('api', __name__)
 
@@ -45,9 +49,10 @@ def create_user():
     db.session.commit()
     return jsonify(new_user.serialize()), 201
 
-    #LST all  USERS[GET]
+    #LIST all  USERS[GET]
 
 @api.route('/users', methods=['GET'])
+
 def get_users():
     users = User.query.all()
     return jsonify([user.serialize() for user in users]), 200
@@ -55,6 +60,7 @@ def get_users():
     #LIST UN USER ID [GET]
 
 @api.route('/users/<int:user_id>', methods=['GET'])
+@jwt_required()
 def get_user(user_id):
     user = User.query.get(user_id)
     if user is None:
@@ -88,6 +94,60 @@ def delete_user(user_id):
     db.session.delete(user)
     db.session.commit()
     return jsonify({'message': 'User deleted'}), 200
+
+
+    # SIGNUP [POST]
+@api.route('/signup', methods=['POST'])
+def signup():
+    data = request.json
+    email = data.get('email', None)
+    password = data.get('password', None)
+    first_name = data.get('first_name', None)
+    last_name = data.get('last_name', None)
+    
+    if not email or not password or not first_name or not last_name:
+        return jsonify({"msg": "Missing email, password, first name, or last name"}), 400
+
+    existing_user = User.query.filter_by(email=email).first()
+    if existing_user:
+        return jsonify({"msg": "User already exists"}), 400
+    
+    new_user = User(
+        username=email,
+        password=password,
+        first_name=first_name,
+        last_name=last_name
+    )
+    db.session.add(new_user)
+    db.session.commit()
+    return jsonify({"msg": "User created successfully"}), 201
+
+# LOGIN [POST]
+@api.route('/login', methods=['POST'])
+
+def login():
+    data = request.json
+    email = data.get('email', None)
+    password = data.get('password', None)
+    
+    if not email or not password:
+        return jsonify({"msg": "Missing email or password"}), 400
+    
+    user = User.query.filter_by(email=email, password=password).first()
+    
+    if not user:
+        return jsonify({"msg": "Bad email or password"}), 401
+    
+    access_token = create_access_token(identity=email)
+    return jsonify(access_token=access_token), 200  
+
+@api.route("/protected", methods=["GET"])
+@jwt_required()
+def protected():
+    # Access the identity of the current user with get_jwt_identity
+    current_user = get_jwt_identity()
+    return jsonify(logged_in_as=current_user), 200
+
 
     
 
