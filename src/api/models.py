@@ -43,3 +43,4 @@ class FavoriteCharacter(db.Model):
             'name':self.name,
             'image':self.image
         }
+
