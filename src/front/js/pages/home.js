@@ -7,6 +7,7 @@ import "../../styles/home.css";
 import { Navbar } from "../component/navbar";
 import { NavbarLanding } from "../component/NavbarLanding";
 import {FormLogin} from "../component/FormLogin";
+import { FormSignUp } from "../component/FormSignUp";
 
 export const Home = () => {
     const { store, actions } = useContext(Context);
@@ -27,12 +28,13 @@ export const Home = () => {
                 
                 <h1>Ricky Morty!!</h1>
                 <FormLogin />
+                <FormSignUp />
                
                 <div className="alert alert-info">
                     {store.message || "Srore seguramente)..." }
                 </div>
                 <p>
-                    This boilerplate comes with lots of documentation:{" "}
+                    
                     <a href="https://start.4geeksacademy.com/starters/react-flask">
                         Read documentation
                     </a>

@@ -62,10 +62,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			logout: () => {
-				localStorage.removeItem("token");
-				setStore({ token: null, auth: false });
-				console.log("User logged out");
+			
+
+			// AQUI EL SIGNUP 
+			signup: async (firstName, lastName, email, password) => {
+				const requestOptions = {  
+					method: 'POST',
+					headers: {'Content-Type': 'application/json'},
+					body: JSON.stringify({ first_name: firstName, last_name: lastName, email, password })
+				};
+				try {
+					console.log("Attempting sign up with", { first_name: firstName, last_name: lastName, email, password });
+					const response = await fetch(process.env.BACKEND_URL + "/api/signup", requestOptions);
+					console.log("Response status:", response.status);
+					if (response.ok) {
+						const data = await response.json();
+						console.log("Response data:", data);
+						setStore({ message: "User created successfully" });
+						return true;
+					} else {
+						const errorData = await response.json();
+						console.log('Sign up failed:', errorData);
+						setStore({ message: errorData.msg || "Sign up failed" });
+						return false;
+					}
+				} catch (error) {
+					console.log('Sign up error:', error);
+					setStore({ message: "Sign up error" });
+					return false;
+				}
 			},
 
 			getMessage: async () => {
