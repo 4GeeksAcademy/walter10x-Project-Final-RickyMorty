@@ -1,64 +1,33 @@
-.navbar-nav .nav-link {
-    color: #000000; /* Color del texto */
-    cursor: pointer;
-}
-.landing-page .bg-light {
-    background-color: #A02CFA !important;
-}
-.navbar-nav .nav-link:hover {
-    color: #f2e2ff; /* Color del texto al pasar el ratón */
-}
-.navbar-light .navbar-brand {
-    color: #A02CFA; /* Color del texto de la marca */
+/* src/front/styles/NavbarLanding.css */
+
+.navbar {
+    padding: 15px;
+    border-radius: 8px; /* Bordes redondeados */
+    width: 100%;
+    margin-left: 0px;
+    
 }
 
-.navbar-light .navbar-toggler {
-    border-color: rgb(255, 255, 255); /* Bordes del botón de toggle */
-}
 .navbar-logo {
-    height: 100%; /* Ocupa toda la altura del navbar */
-    max-height: 60px; /* Asegura que no sea demasiado grande */
-    width: auto; /* Permite que el ancho sea automático y proporcional */
-    max-width: 100%; /* Evita que el ancho sea mayor al contenedor */
+    height: 40px; /* Ajusta este valor según sea necesario */
+    width: auto;
+}
+
+.nav-link {
+    font-size: 1.1rem;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+    color: #1e90ff !important; /* Color de texto */
+}
+
+.nav-link:hover {
+    color: #f8d210 !important; /* Un color vibrante para el hover */
 }
 
 .navbar-toggler {
-    margin-left: auto; /* Alinea el toggler a la derecha */
+    border: none;
 }
 
-.btn-signup {
-    border: solid 2px;
-    border-radius: 30px;
-    --bs-btn-color: #fff;
-    --bs-btn-bg: #000000;
-    --bs-btn-border-color: #fff;
-    --bs-btn-hover-color: #A02CFA;
-    --bs-btn-hover-bg: #ffffff;
-    --bs-btn-hover-border-color: #000000;
-    --bs-btn-focus-shadow-rgb: 174, 76, 251;
-    --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: #8023c8;
-    --bs-btn-active-border-color: #7821bc;
-    --bs-btn-active-shadow: inset 0 3px 5px rgba(0,0,0,0.125);
-    --bs-btn-disabled-color: #fff;
-    --bs-btn-disabled-bg: #A02CFA;
-    --bs-btn-disabled-border-color: #A02CFA;
-}
-.btn-login {
-    border-radius: 30px;
-    border: solid 2px;
-    --bs-btn-color: #000000;
-    --bs-btn-bg: #ffffff;
-    --bs-btn-border-color: #000000;
-    --bs-btn-hover-color: #A02CFA;
-    --bs-btn-hover-bg: #ede9f1;
-    --bs-btn-hover-border-color: #ffffff;
-    --bs-btn-focus-shadow-rgb: 174, 76, 251;
-    --bs-btn-active-color: #A02CFA;
-    --bs-btn-active-bg: #ffffff;
-    --bs-btn-active-border-color: #ffffff;
-    --bs-btn-active-shadow: inset 0 3px 5px rgba(0,0,0,0.125);
-    --bs-btn-disabled-color: #A02CFA;
-    --bs-btn-disabled-bg: #ffffff;
-    --bs-btn-disabled-border-color: #ffffff;
+.navbar-dark .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }

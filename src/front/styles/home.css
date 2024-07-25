@@ -1,7 +1,36 @@
-/*
-    home.css: This website contains selectors only used in home.css
+/* src/front/styles/home.css */
 
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
+.home-container {
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.main-content {
+    max-width: 600px;
+    margin: auto;
+}
+
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.text-white {
+    color: white;
+}
+
+.btn-primary {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+.btn-primary:hover {
+    background-color: #138496;
+    border-color: #117a8b;
+}
