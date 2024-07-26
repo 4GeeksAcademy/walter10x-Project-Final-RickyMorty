@@ -12,7 +12,7 @@ export const FormLogin = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    setError(''); // Limpia el error antes de intentar el login
+    setError(''); 
     const success = await actions.login(email, password);
     if (success) {
       console.log("Login successful");
