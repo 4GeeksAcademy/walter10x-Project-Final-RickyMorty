@@ -6,6 +6,8 @@ import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { Navbar } from "../component/navbar";
 import { NavbarLanding } from "../component/NavbarLanding";
+import {FormLogin} from "../component/FormLogin";
+import { FormSignUp } from "../component/FormSignUp";
 
 export const Home = () => {
     const { store, actions } = useContext(Context);
@@ -23,15 +25,16 @@ export const Home = () => {
 
             {/* Contenido principal de la página */}
             <div className="text-center mt-5">
-                <h1>Hello Rigoioji!!</h1>
-                <p>
-                    <img src={rigoImageUrl} alt="Rigo Baby" />
-                </p>
+                
+                <h1>Ricky Morty!!</h1>
+                <FormLogin />
+             
+               
                 <div className="alert alert-info">
-                    {store.message || "Loading message from the backend (make sure your python backend is running)..." }
+                    {store.message || "Srore seguramente)..." }
                 </div>
                 <p>
-                    This boilerplate comes with lots of documentation:{" "}
+                    
                     <a href="https://start.4geeksacademy.com/starters/react-flask">
                         Read documentation
                     </a>

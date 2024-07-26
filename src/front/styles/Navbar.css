@@ -1,4 +1,4 @@
-/* Navbar.css */
+/* src/front/styles/Navbar.css */
 
 /* General Styles */
 .App {
@@ -14,18 +14,18 @@
 }
 
 .navbar-main-open {
-    width: 250px;
+  
     transition: width 0.3s ease-in-out;
-    background-color: white;
-    margin-left: 20px;
+    
+    margin-left: 15px;
 }
 
 .navbar-main-closed {
-    width: 80px;
+    width: 100px; 
     transition: width 0.3s ease-in-out;
     margin-left: 0px;
     background-color: white;
-    
+    margin-left: -110px;
 }
 
 .container-fluid {
@@ -49,12 +49,6 @@
 }
 
 .menu-button {
-    position: absolute;
-    top: 10px;
-    left: 10px;
- 
-    transition: transform 0.3s ease-in-out;
-    width: 160px;
     height: 66px;
     background-color: #343a40;
     color: white;
@@ -66,10 +60,7 @@
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
-    position: relative;
-    z-index: 1000;
-    margin-left: -30px;
-
+    width: 50px;
 }
 
 .menu-button:hover {
@@ -83,58 +74,14 @@
     transform: scale(0.95);
 }
 
-
-
-.btn:focus {
-    outline: none;
-}
-
 .fa-solid {
     color: #1e90ff; /* Azul eléctrico */
-}
-
-/* Ajustes para el icono de menú */
-/* Estilos mejorados para el botón del menú */
-.fa-bars-staggered {
-    position: relative;
-    font-size: 24px;
-    cursor: pointer;
-    padding: 10px;
-    color: white;
-    transition: transform 0.3s ease;
-}
-
-.fa-bars-staggered::before {
-    content: "\f550"; /* Código del icono barras */
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    margin-right: 10px;
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    color: black; /* Color negro para el icono */
-}
-
-.fa-bars-staggered:hover {
-    transform: scale(1.1); /* Efecto de escala al hacer hover */
-}
-
-
-.rick-and-morty {
-    color: #1e90ff; /* Azul eléctrico */
-    margin-left: 20px; /* Ajustar el margen según sea necesario */
-    transition: transform 0.3s ease-in-out;
 }
 
 .navbar-content.shifted .menu-button {
     transform: translateX(170px);
     margin-top: 1px;
     margin-left: -6px;
-}
-
-.navbar-content.shifted .rick-and-morty {
-    transform: translateX(170px);
-    
 }
 
 .navbar-title {
@@ -161,7 +108,7 @@
 }
 
 .sidebar.closed {
-    transform: translateX(-100%);
+    transform: translateX(-30%); /* Ajusta esto para mostrar el 30% de la barra lateral por defecto */
 }
 
 .sidebar-header {
@@ -199,26 +146,28 @@
     margin: 10px 0;
 }
 
-.nav-link {
+.nav-link, .btn.menu-button {
     color: #fff;
     text-decoration: none;
     display: flex;
     align-items: center;
+    justify-content: flex-start; /* Alinea los íconos a la derecha y el texto a la izquierda */
 }
 
 .nav-link.active {
-    background-color: #282828; /* Color ligeramente más oscuro para indicar la página activa */
+    
     border-radius: 5px;
-    padding: 10px;
+    padding: 10px 10px 10px 22px ;
 }
 
-.nav-link .fa-solid {
-    margin-right: 10px;
+.nav-link .fa-solid, .btn.menu-button i {
+    margin-right: 10px; /* Espacio entre ícono y texto */
 }
 
-.nav-link span {
+.nav-link span, .btn.menu-button span {
     font-size: 18px;
     font-weight: bold;
+    display: inline-block;
 }
 
 /* Button Close */
@@ -254,8 +203,12 @@
         left: 10px;
     }
 
-    .navbar-content.shifted .menu-button,
-    .navbar-content.shifted .rick-and-morty {
+    .navbar-content.shifted .menu-button {
         transform: translateX(0);
     }
+}
+
+.colorido{
+    color: #1e90ff
+    
 }
