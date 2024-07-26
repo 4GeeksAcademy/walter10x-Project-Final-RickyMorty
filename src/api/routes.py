@@ -2,6 +2,7 @@ from flask import Blueprint, request, jsonify
 from api.models import db, User, FavoriteCharacter
 from flask_cors import CORS
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, JWTManager
+import requests
 
 api = Blueprint('api', __name__)
 
@@ -176,3 +177,37 @@ def get_favorite_characters():
 def protected():
     current_user = get_jwt_identity()
     return jsonify(logged_in_as=current_user), 200
+
+
+RICKY_MORTY_API = {
+    "characters": "https://rickandmortyapi.com/api/character",
+    "locations": "https://rickandmortyapi.com/api/location",
+    "episodes": "https://rickandmortyapi.com/api/episode"
+}
+
+# GET CHARACTERS [GET]
+@api.route('/characters', methods=['GET'])
+@jwt_required()
+def get_characters():
+    response = requests.get(RICKY_MORTY_API["characters"])
+    if response.status_code != 200:
+        return jsonify({"msg": "Error fetching characters"}), response.status_code
+    return jsonify(response.json()), 200
+
+# GET LOCATIONS [GET]
+@api.route('/locations', methods=['GET'])
+@jwt_required()
+def get_locations():
+    response = requests.get(RICKY_MORTY_API["locations"])
+    if response.status_code != 200:
+        return jsonify({"msg": "Error fetching locations"}), response.status_code
+    return jsonify(response.json()), 200
+
+# GET EPISODES [GET]
+@api.route('/episodes', methods=['GET'])
+@jwt_required()
+def get_episodes():
+    response = requests.get(RICKY_MORTY_API["episodes"])
+    if response.status_code != 200:
+        return jsonify({"msg": "Error fetching episodes"}), response.status_code
+    return jsonify(response.json()), 200
