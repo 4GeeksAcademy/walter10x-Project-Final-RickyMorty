@@ -108,7 +108,7 @@
 }
 
 .sidebar.closed {
-    transform: translateX(0%); /* Ajusta esto para mostrar el 30% de la barra lateral por defecto */
+    transform: translateX(-30%); /* Ajusta esto para mostrar el 30% de la barra lateral por defecto */
 }
 
 .sidebar-header {
@@ -155,9 +155,9 @@
 }
 
 .nav-link.active {
-    background-color: #282828; /* Color ligeramente más oscuro para indicar la página activa */
+    
     border-radius: 5px;
-    padding: 10px;
+    padding: 10px 10px 10px 22px ;
 }
 
 .nav-link .fa-solid, .btn.menu-button i {
@@ -206,4 +206,9 @@
     .navbar-content.shifted .menu-button {
         transform: translateX(0);
     }
+}
+
+.colorido{
+    color: #1e90ff
+    
 }

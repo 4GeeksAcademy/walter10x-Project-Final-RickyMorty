@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Context } from '../store/appContext';
 import '../../styles/FormLogin.css';
 import rickAndMortyBackground from "../../img/rick-and-morty-background.jpg";
+import backgroundImage from "../../img/backgroundImageUrl.png"
 
 export const FormLogin = () => {
   const { actions } = useContext(Context);
@@ -23,7 +24,7 @@ export const FormLogin = () => {
   };
 
   return (
-    <div className="container" style={{ backgroundImage: `url(${rickAndMortyBackground})` }}>
+    <div className="container" style={{ backgroundImage: `url(${backgroundImage})` }}>
       <div className="form-wrapper">
         <div className="title-container">
           <h1 className="title">Rick and Morty Login</h1>
