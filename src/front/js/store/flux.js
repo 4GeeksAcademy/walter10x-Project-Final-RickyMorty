@@ -15,7 +15,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 }
             ],
             token: localStorage.getItem("token") || null,
-            auth: false,
+            auth: !!localStorage.getItem("token"),
             user: null,
             characters: [],
             locations: [],
@@ -53,13 +53,18 @@ const getState = ({ getStore, getActions, setStore }) => {
                 }
             },
 
+            logout: () => {
+                localStorage.removeItem("token");
+                setStore({ auth: false, token: null });
+            },
+
             checkAuth: () => {
                 const token = localStorage.getItem('token');
                 if (token) {
-                    setStore({ auth: true });
+                    setStore({ auth: true, token: token });
                     console.log("User is authenticated, token:", token);
                 } else {
-                    setStore({ auth: false });
+                    setStore({ auth: false, token: null });
                     console.log("User is not authenticated");
                 }
             },

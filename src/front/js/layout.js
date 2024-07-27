@@ -1,6 +1,5 @@
-// src/layout.js
-
-import React from "react";
+// src/front/js/layout.js
+import React, { useEffect, useContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
@@ -15,12 +14,17 @@ import { Favorites } from "./pages/Favorites";
 import { Profile } from "./pages/Profile";
 
 import { PrivateRoute } from "./component/PrivateRoute";
-import injectContext from "./store/appContext";
+import injectContext, { Context } from "./store/appContext";
 
 import { Footer } from "./component/footer";
 
 const Layout = () => {
     const basename = process.env.BASENAME || "";
+    const { actions } = useContext(Context);
+
+    useEffect(() => {
+        actions.checkAuth();
+    }, []);
 
     if (!process.env.BACKEND_URL || process.env.BACKEND_URL === "") return <BackendURL />;
 
