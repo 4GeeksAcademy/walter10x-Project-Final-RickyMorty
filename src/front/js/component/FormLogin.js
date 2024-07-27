@@ -1,22 +1,23 @@
 import React, { useState, useContext } from 'react';
 import { Context } from '../store/appContext';
+import { useNavigate } from 'react-router-dom';
 import '../../styles/FormLogin.css';
-import rickAndMortyBackground from "../../img/rick-and-morty-background.jpg";
-import backgroundImage from "../../img/backgroundImageUrl.png"
+import backgroundImage from "../../img/backgroundImageUrl.png";
 
 export const FormLogin = () => {
   const { actions } = useContext(Context);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    setError(''); 
+    setError('');
     const success = await actions.login(email, password);
     if (success) {
       console.log("Login successful");
-      // Puedes redirigir al usuario o realizar otras acciones aquí
+      navigate("/"); // Redirigir a la página de inicio u otra página después de iniciar sesión
     } else {
       console.log("Login failed");
       setError("Invalid email or password");
@@ -46,10 +47,7 @@ export const FormLogin = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <button
-            className="button"
-            type="submit"
-          >
+          <button className="button" type="submit">
             Login
           </button>
         </form>
