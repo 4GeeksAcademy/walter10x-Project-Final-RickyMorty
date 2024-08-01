@@ -129,6 +129,8 @@ def login():
     access_token = create_access_token(identity=user.id)
     return jsonify(access_token=access_token), 200
 
+    
+
 # ADD A FAVORITE CHARACTER [POST]
 @api.route('/favorites/characters', methods=['POST'])
 @jwt_required()
@@ -159,6 +161,54 @@ def add_favorite_character():
 
     return jsonify(new_favorite.serialize()), 201
 
+@api.route('/favorites/characters', methods=['DELETE'])
+@jwt_required()
+def remove_all_favorites():
+    current_user = get_jwt_identity()
+    user = User.query.get(current_user)
+
+    if not user:
+        return jsonify({"msg": "User not found"}), 404
+
+    favorites = FavoriteCharacter.query.filter_by(user_id=user.id).all()
+    
+    if not favorites:
+        return jsonify({"msg": "No favorites found"}), 404
+
+    for favorite in favorites:
+        db.session.delete(favorite)
+
+    db.session.commit()
+
+    return jsonify({"msg": "All favorites removed successfully"}), 200
+
+
+    
+
+
+@api.route('/favorites/characters/<int:character_id>', methods=['DELETE'])
+@jwt_required()
+def remove_favorite(character_id):
+    current_user = get_jwt_identity()
+    user = User.query.get(current_user)
+    
+    if not user:
+        return jsonify({"msg": "User not found"}), 404
+    
+    favorite = FavoriteCharacter.query.filter_by(user_id=user.id, character_id=character_id).first()
+    
+    if not favorite:
+        return jsonify({"msg": "Favorite not found"}), 404
+    
+    db.session.delete(favorite)
+    db.session.commit()
+    
+    return jsonify({"msg": "Favorite removed successfully"}), 200
+
+
+
+
+
 # GET FAVORITE CHARACTERS [GET]
 @api.route('/favorites/characters', methods=['GET'])
 @jwt_required()
@@ -185,23 +235,30 @@ RICKY_MORTY_API = {
     "episodes": "https://rickandmortyapi.com/api/episode"
 }
 
-# GET CHARACTERS [GET]
 @api.route('/characters', methods=['GET'])
 @jwt_required()
 def get_characters():
+    # Obtener personajes de la API externa
     response = requests.get(RICKY_MORTY_API["characters"])
     if response.status_code != 200:
         return jsonify({"msg": "Error fetching characters"}), response.status_code
-    return jsonify(response.json()), 200
 
-# GET LOCATIONS [GET]
-@api.route('/locations', methods=['GET'])
-@jwt_required()
-def get_locations():
-    response = requests.get(RICKY_MORTY_API["locations"])
-    if response.status_code != 200:
-        return jsonify({"msg": "Error fetching locations"}), response.status_code
-    return jsonify(response.json()), 200
+    characters = response.json().get('results', [])
+
+    # Obtener favoritos del usuario
+    current_user = get_jwt_identity()
+    user = User.query.get(current_user)
+    if not user:
+        return jsonify({"msg": "User not found"}), 404
+
+    favorite_character_ids = {fc.character_id for fc in user.favorite_characters}
+
+    # Marcar personajes que están en favoritos
+    for character in characters:
+        character['is_favorite'] = character['id'] in favorite_character_ids
+
+    return jsonify(characters), 200
+
 
 # GET EPISODES [GET]
 @api.route('/episodes', methods=['GET'])

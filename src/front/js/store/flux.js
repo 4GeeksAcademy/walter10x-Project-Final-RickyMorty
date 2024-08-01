@@ -19,7 +19,8 @@ const getState = ({ getStore, getActions, setStore }) => {
             user: null,
             characters: [],
             locations: [],
-            episodes: []
+            episodes: [],
+            favorites: [] // Ensure favorites is an array
         },
         actions: {
             exampleFunction: () => {
@@ -55,7 +56,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
             logout: () => {
                 localStorage.removeItem("token");
-                setStore({ auth: false, token: null });
+                setStore({ auth: false, token: null, favorites: [] }); // Clear favorites on logout
             },
 
             checkAuth: () => {
@@ -100,21 +101,28 @@ const getState = ({ getStore, getActions, setStore }) => {
             getCharacters: async () => {
                 const store = getStore();
                 if (!store.token) return;
-
+            
                 try {
                     const response = await fetch(process.env.BACKEND_URL + '/api/characters', {
+                        method: 'GET',
                         headers: {
                             'Authorization': `Bearer ${store.token}`
                         }
                     });
+            
                     if (response.ok) {
                         const data = await response.json();
-                        setStore({ characters: data.results });
+                        setStore({ characters: data });
+                    } else {
+                        const errorData = await response.json();
+                        console.error('Error response:', errorData);
                     }
                 } catch (error) {
                     console.error('Error fetching characters:', error);
                 }
             },
+            
+            
 
             getLocations: async () => {
                 const store = getStore();
@@ -153,6 +161,113 @@ const getState = ({ getStore, getActions, setStore }) => {
                     console.error('Error fetching episodes:', error);
                 }
             },
+
+            getFavorites: async () => {
+                const store = getStore();
+                if (!store.token) return;
+            
+                try {
+                    const response = await fetch(process.env.BACKEND_URL + '/api/favorites/characters', {
+                        headers: {
+                            'Authorization': `Bearer ${store.token}`
+                        }
+                    });
+                    if (response.ok) {
+                        const data = await response.json();
+                        setStore({ favorites: data.results });
+                    } else {
+                        const errorData = await response.json();
+                        console.error('Error response:', errorData);
+                    }
+                } catch (error) {
+                    console.error('Error fetching favorites:', error);
+                }
+            },
+            
+
+            addFavorite: async (character) => {
+                const store = getStore();
+                if (!store.token) return;
+            
+                try {
+                    const response = await fetch(process.env.BACKEND_URL + '/api/favorites/characters', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${store.token}`
+                        },
+                        body: JSON.stringify({
+                            character_id: character.id,
+                            name: character.name,
+                            image: character.image
+                        })
+                    });
+                    if (response.ok) {
+                        const data = await response.json();
+                        // Asegúrate de que `favorites` es un array antes de hacer el spread
+                        setStore({ favorites: [...(store.favorites || []), data] });
+                    } else {
+                        const errorData = await response.json();
+                        console.error('Error response:', errorData);
+                    }
+                } catch (error) {
+                    console.error('Error adding favorite:', error);
+                }
+            },
+            
+
+
+            removeFavorite: async (characterId) => {
+                const store = getStore();
+                if (!store.token) return;
+        
+                try {
+                    const response = await fetch(process.env.BACKEND_URL + `/api/favorites/characters/${characterId}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${store.token}`
+                        }
+                    });
+        
+                    if (response.ok) {
+                        // Actualiza los favoritos
+                      //  await actions.getCharacters(); // Llama a getCharacters para actualizar la lista de personajes
+                    } else {
+                        const errorData = await response.json();
+                        console.error('Error response:', errorData);
+                    }
+                } catch (error) {
+                    console.error('Error removing favorite:', error);
+                }
+            },
+            
+
+
+            removeAllFavorites: async () => {
+                const store = getStore();
+                if (!store.token) return;
+
+                try {
+                    const response = await fetch(`${process.env.BACKEND_URL}/api/favorites/characters`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Authorization': `Bearer ${store.token}`
+                        }
+                    });
+                    if (response.ok) {
+                        setStore({ favorites: [] });
+                    } else {
+                        const errorData = await response.json();
+                        console.error('Error removing all favorites:', errorData);
+                    }
+                } catch (error) {
+                    console.error('Error removing all favorites:', error);
+                }
+            },
+
+            
+
 
             getMessage: async () => {
                 // Implement your message fetching logic if needed

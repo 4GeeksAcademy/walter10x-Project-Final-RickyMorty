@@ -1,8 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Context } from '../store/appContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import '../../styles/FormLogin.css';
-import backgroundImage from "../../img/backgroundImageUrl.png";
 
 export const FormLogin = () => {
   const { actions } = useContext(Context);
@@ -25,7 +24,7 @@ export const FormLogin = () => {
   };
 
   return (
-    <div className="container" style={{ backgroundImage: `url(${backgroundImage})` }}>
+    <div className="container">
       <div className="form-wrapper">
         <div className="title-container">
           <h1 className="title">Rick and Morty Login</h1>
@@ -52,6 +51,9 @@ export const FormLogin = () => {
           </button>
         </form>
         {error && <p className="error-message">{error}</p>}
+        <p className="register-link">
+          No estás registrado? <Link to="/signup">Regístrate aquí</Link>
+        </p>
       </div>
     </div>
   );

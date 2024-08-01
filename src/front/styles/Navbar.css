@@ -6,7 +6,7 @@
 }
 
 .navbar {
-    background-color: #343a40; /* Color oscuro para el fondo */
+    background-color: #ffffff; /* Color oscuro para el fondo */
     padding: 10px;
     position: relative;
     margin-left: 125px; /* Ajuste para mover la navbar */
@@ -17,7 +17,7 @@
   
     transition: width 0.3s ease-in-out;
     
-    margin-left: 15px;
+    margin-left: -5px;
 }
 
 .navbar-main-closed {
@@ -42,7 +42,7 @@
 .btn {
     background: none;
     border: none;
-    color: #1e90ff; /* Azul eléctrico */
+    color: #ffffff; /* Azul eléctrico */
     cursor: pointer;
     position: relative;
     z-index: 1001; /* Asegurar que el botón esté por encima de otros elementos */
@@ -50,7 +50,7 @@
 
 .menu-button {
     height: 66px;
-    background-color: #343a40;
+    background-color: #ffffff;
     color: white;
     border: none;
     border-radius: 5%;
@@ -65,7 +65,7 @@
 
 .menu-button:hover {
     background-color: #495057;
-    color: #00ffff; /* Color azul eléctrico */
+    color: #ffffff; /* Color azul eléctrico */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     transform: scale(1.1);
 }
@@ -75,7 +75,7 @@
 }
 
 .fa-solid {
-    color: #1e90ff; /* Azul eléctrico */
+    color: #f8fafc; /* Azul eléctrico */
 }
 
 .navbar-content.shifted .menu-button {
@@ -92,7 +92,7 @@
 
 /* Sidebar Styles */
 .sidebar {
-    background-color: #1b1b1b; /* Color oscuro para el fondo */
+    background-color: #532cd9; /* Color oscuro para el fondo */
     color: #fff;
     position: fixed;
     top: 0;
@@ -140,10 +140,12 @@
     list-style: none;
     padding: 0;
     margin: 0;
+    margin-left: -25px;
 }
 
 .nav-item {
     margin: 10px 0;
+
 }
 
 .nav-link, .btn.menu-button {
@@ -158,16 +160,19 @@
     
     border-radius: 5px;
     padding: 10px 10px 10px 22px ;
+    
 }
 
 .nav-link .fa-solid, .btn.menu-button i {
     margin-right: 10px; /* Espacio entre ícono y texto */
+    width: 10px
 }
 
 .nav-link span, .btn.menu-button span {
     font-size: 18px;
     font-weight: bold;
     display: inline-block;
+    color: white;
 }
 
 /* Button Close */
@@ -177,6 +182,7 @@
     color: #fff;
     font-size: 24px;
     cursor: pointer;
+   
 }
 
 .btn-close:focus {
@@ -208,7 +214,49 @@
     }
 }
 
-.colorido{
-    color: #1e90ff
+
+    .colorido {
+        color: #1e90ff;
+        margin-left: 13px;
+    
     
 }
+
+.nav-link.active.colorido2 {
+    background: none;
+    color: inherit;
+    border: none;
+    outline: none;
+    transition: all 0.3s ease;
+    position: relative;
+    top: 0;
+    margin-left: -1px;
+}
+
+.nav-link.active.colorido2:hover {
+    color: rgb(214, 41, 41);
+    top: -3px; /* Mueve el elemento 3 píxeles hacia arriba */
+}
+
+
+*, ::after, ::before {
+    box-sizing: border-box;
+    margin-left: 3px;
+}
+
+.white {  
+    color: #fff;
+}
+
+.fa-solid.fa-star.fs-3 {
+    margin-left: 1px; /* 0 arriba y abajo, 5px izquierda y derecha */
+}
+
+
+
+
+
+
+
+
+

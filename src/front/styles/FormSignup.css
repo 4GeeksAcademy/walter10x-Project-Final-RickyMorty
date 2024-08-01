@@ -21,7 +21,7 @@
   }
   
   .title-container {
-    background: rgba(0, 0, 0, 0.8);
+    background:  #532cd9;
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 1rem;
@@ -45,7 +45,7 @@
   .button {
     width: 100%;
     padding: 10px;
-    background-color: #00bfff;
+    background-color:  #532cd9;
     color: white;
     border: none;
     border-radius: 5px;
