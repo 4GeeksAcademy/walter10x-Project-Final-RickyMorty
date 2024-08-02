@@ -11,6 +11,7 @@
     position: relative;
     margin-left: 125px; /* Ajuste para mover la navbar */
     margin-top: -20px;
+
 }
 
 .navbar-main-open {
@@ -92,7 +93,7 @@
 
 /* Sidebar Styles */
 .sidebar {
-    background-color: #532cd9; /* Color oscuro para el fondo */
+    background: linear-gradient(45deg, #0a0a0a, #7b5ee8, #0a0a0a);
     color: #fff;
     position: fixed;
     top: 0;

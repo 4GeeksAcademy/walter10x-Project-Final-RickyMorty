@@ -20,13 +20,7 @@ export const Navbar = () => {
 
     return (
         <div className="App">
-            <nav className={`navbar ${isSidebarOpen ? "navbar-main-open" : "navbar-main-closed"}`}>
-                <div className="container-fluid">
-                    <div className={`d-flex align-items-center navbar-content ${isSidebarOpen ? "shifted" : ""}`}>
-                        {/* Other navbar content */}
-                    </div>
-                </div>
-            </nav>
+           
             <div className={`sidebar ${isSidebarOpen ? "open" : "closed"}`}>
                 <div className="sidebar-header">
                     {/* Sidebar header content */}

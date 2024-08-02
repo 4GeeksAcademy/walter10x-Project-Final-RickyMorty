@@ -1,47 +1,65 @@
-/* src/front/styles/NavbarLanding.css */
-
 .navbar {
     padding: 15px;
-    border-radius: 8px; /* Bordes redondeados */
+    border-radius: 0; /* Quitamos los bordes redondeados para un look más moderno */
     width: 100%;
     margin-left: 0px;
-    background-color: #532cd9;
-    
+    background-color: rgba(87, 86, 88, 0.9); /* Fondo semi-transparente */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    transition: all 0.3s ease;
 }
 
-
+.navbar:hover {
+    background-color: rgba(87, 86, 88, 1); /* Fondo sólido al hacer hover */
+}
 
 .nav-link {
     font-size: 1.1rem;
     margin-right: 15px;
-    transition: color 0.3s ease;
-    color: #edf1f5 !important; /* Color de texto */
-    
+    transition: all 0.3s ease;
+    color: #ffffff !important;
+    position: relative;
 }
 
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #532cd9; /* Color de subrayado */
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
 
 .navbar-toggler {
     border: none;
+    background-color: transparent;
 }
 
 .navbar-dark .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
 @media (min-width: 992px) {
     .navbar-expand-lg .navbar-collapse {
         display: flex !important;
         flex-basis: auto;
-        background-color: #532cd9;
+        background-color: transparent;
     }
 }
 
-
-
-.navbar-dark .navbar-nav .nav-link,
-.nav-link.active.colorido2 {
+.navbar-dark .navbar-nav .nav-link, .nav-link.active.colorido2 {
     background: none;
-    color: inherit;
+    color: #ffffff;
     border: none;
     outline: none;
     transition: all 0.3s ease;
@@ -51,8 +69,26 @@
     margin-right: 10px;
 }
 
-.navbar-dark .navbar-nav .nav-link:hover,
-.nav-link.active.colorido2:hover {
-    color: white;
+.navbar-dark .navbar-nav .nav-link:hover, .nav-link.active.colorido2:hover {
+    color: #532cd9;
     top: -3px;
+}
+
+/* Estilo para el enlace activo */
+.navbar-dark .navbar-nav .nav-link.active {
+    color: #532cd9 !important;
+    font-weight: bold;
+}
+
+/* Animación para el botón del menú en móviles */
+.navbar-toggler:focus {
+    outline: none;
+}
+
+.navbar-toggler .navbar-toggler-icon {
+    transition: transform 0.3s ease;
+}
+
+.navbar-toggler:not(.collapsed) .navbar-toggler-icon {
+    transform: rotate(90deg);
 }
