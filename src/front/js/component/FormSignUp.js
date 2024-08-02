@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Context } from '../store/appContext';
 import '../../styles/FormSignup.css';
-import rickAndMortyBackground from "../../img/rick-and-morty-background.jpg";
 
 export const FormSignUp = () => {
   const { actions } = useContext(Context);
@@ -13,62 +12,72 @@ export const FormSignUp = () => {
 
   const handleSignUp = async (event) => {
     event.preventDefault();
+    setError('');
     const success = await actions.signup(firstName, lastName, email, password);
     if (success) {
       console.log("Sign Up successful");
+      // Aquí podrías redirigir al usuario o mostrar un mensaje de éxito
     } else {
       console.log("Sign Up failed");
-      setError("Error signing up");
+      setError("Error signing up. Please try again.");
     }
   };
 
   return (
-    <div className="container" style={{ backgroundImage: `url(${rickAndMortyBackground})` }}>
-      <div className="form-wrapper">
-        <div className="title-container">
-          <h1 className="title">Rick and Morty Sign Up</h1>
+    <div className="signup-container">
+      <div className="signup-form-wrapper">
+        <div className="signup-title-container">
+          <h1 className="signup-title">Rick and Morty Sign Up</h1>
         </div>
-        <form onSubmit={handleSignUp}>
-          <input
-            className="input"
-            type="text"
-            placeholder="First Name"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            required
-          />
-          <input
-            className="input"
-            type="text"
-            placeholder="Last Name"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            required
-          />
-          <input
-            className="input"
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <input
-            className="input"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <button
-            className="button"
-            type="submit"
-          >
+        <form onSubmit={handleSignUp} className="signup-form">
+          <div className="input-group">
+            <input
+              className="signup-input"
+              type="text"
+              placeholder="First Name"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-group">
+            <input
+              className="signup-input"
+              type="text"
+              placeholder="Last Name"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-group">
+            <input
+              className="signup-input"
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-group">
+            <input
+              className="signup-input"
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <button className="signup-button" type="submit">
             Sign Up
           </button>
+           
+          
         </form>
-        {error && <p className="error-message">{error}</p>}
+        {error && <p className="signup-error-message">{error}</p>}
+        
       </div>
     </div>
   );

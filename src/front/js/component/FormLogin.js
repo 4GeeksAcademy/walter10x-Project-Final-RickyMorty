@@ -16,7 +16,7 @@ export const FormLogin = () => {
     const success = await actions.login(email, password);
     if (success) {
       console.log("Login successful");
-      navigate("/"); // Redirigir a la página de inicio u otra página después de iniciar sesión
+      navigate("/");
     } else {
       console.log("Login failed");
       setError("Invalid email or password");
@@ -24,34 +24,38 @@ export const FormLogin = () => {
   };
 
   return (
-    <div className="container">
-      <div className="form-wrapper">
-        <div className="title-container">
-          <h1 className="title">Rick and Morty Login</h1>
+    <div className="login-container">
+      <div className="login-form-wrapper">
+        <div className="login-title-container">
+          <h1 className="login-title">Rick and Morty Login</h1>
         </div>
-        <form onSubmit={handleLogin}>
-          <input
-            className="input"
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <input
-            className="input"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <button className="button" type="submit">
+        <form onSubmit={handleLogin} className="login-form">
+          <div className="input-group">
+            <input
+              className="login-input"
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-group">
+            <input
+              className="login-input"
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <button className="login-button" type="submit">
             Login
           </button>
         </form>
-        {error && <p className="error-message">{error}</p>}
-        <p className="register-link">
+        {error && <p className="login-error-message">{error}</p>}
+        <p className="login-register-link">
           No estás registrado? <Link to="/signup">Regístrate aquí</Link>
         </p>
       </div>

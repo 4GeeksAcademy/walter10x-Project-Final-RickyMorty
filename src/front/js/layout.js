@@ -1,4 +1,3 @@
-// src/front/js/layout.js
 import React, { useEffect, useContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
@@ -12,7 +11,9 @@ import { Locations } from "./pages/Locations";
 import { Episodes } from "./pages/Episodes";
 import { Favorites } from "./pages/Favorites";
 import { Profile } from "./pages/Profile";
+import { SignUpPage } from "./pages/SignUpPage"; // Importar la página de registro
 
+import { Navbar } from "./component/navbar"; // Importar la barra de navegación
 import { PrivateRoute } from "./component/PrivateRoute";
 import injectContext, { Context } from "./store/appContext";
 
@@ -32,6 +33,7 @@ const Layout = () => {
         <div>
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
+                    <Navbar /> {/* Agregar la barra de navegación aquí */}
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/demo" element={<Demo />} />
@@ -43,6 +45,7 @@ const Layout = () => {
                             <Route path="/favorites" element={<Favorites />} />
                             <Route path="/profile" element={<Profile />} />
                         </Route>
+                        <Route path="/signup" element={<SignUpPage />} /> {/* Añadir ruta de registro */}
                         <Route path="*" element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />

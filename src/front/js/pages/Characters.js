@@ -1,6 +1,8 @@
 import React, { useEffect, useContext } from 'react';
 import { Context } from '../store/appContext';
 import { Card } from '../component/card';
+import '../../styles/Characters.css'; // Asegúrate de importar el CSS
+import { Navbar } from '../component/navbar';
 
 export const Characters = () => {
     const { store, actions } = useContext(Context);
@@ -32,11 +34,11 @@ export const Characters = () => {
     };
 
     return (
-        <div>
-            <h1>Characters</h1>
-            <div className="row">
+        <div className="characters-container">
+            <h1 className="title">Characters</h1>
+            <div className="characters-grid">
                 {store.characters.map(character => (
-                    <div key={character.id} className="col-md-3">
+                    <div key={character.id} className="character-card">
                         <Card
                             image={character.image}
                             title={character.name}
