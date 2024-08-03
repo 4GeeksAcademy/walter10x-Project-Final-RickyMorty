@@ -122,6 +122,21 @@ const getState = ({ getStore, getActions, setStore }) => {
                 }
             },
             
+            getCharacterById: async (characterId) => {
+                try {
+                    const response = await fetch(`https://rickandmortyapi.com/api/character/${characterId}`);
+                    if (response.ok) {
+                        const data = await response.json();
+                        return data;
+                    } else {
+                        console.error("Failed to fetch character details");
+                        return null;
+                    }
+                } catch (error) {
+                    console.error("Error fetching character details:", error);
+                    return null;
+                }
+            },
             
 
             getLocations: async () => {

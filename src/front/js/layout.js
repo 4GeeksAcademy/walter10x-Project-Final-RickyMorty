@@ -11,7 +11,8 @@ import { Locations } from "./pages/Locations";
 import { Episodes } from "./pages/Episodes";
 import { Favorites } from "./pages/Favorites";
 import { Profile } from "./pages/Profile";
-import { SignUpPage } from "./pages/SignUpPage"; // Importar la página de registro
+import { SignUpPage } from "./pages/SignUpPage"; 
+import { CharacterDetailPage } from "./pages/CharacterDetailPage";
 
 import { Navbar } from "./component/navbar"; // Importar la barra de navegación
 import { PrivateRoute } from "./component/PrivateRoute";
@@ -45,7 +46,8 @@ const Layout = () => {
                             <Route path="/favorites" element={<Favorites />} />
                             <Route path="/profile" element={<Profile />} />
                         </Route>
-                        <Route path="/signup" element={<SignUpPage />} /> {/* Añadir ruta de registro */}
+                        <Route path="/signup" element={<SignUpPage />} /> 
+                        <Route path="/character/:characterId" element={<CharacterDetailPage />} />
                         <Route path="*" element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />

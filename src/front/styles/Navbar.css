@@ -88,7 +88,7 @@
 .navbar-title {
     display: flex;
     align-items: center;
-    margin-left: auto; /* Mueve el título hacia la derecha */
+    margin-left: auto; 
 }
 
 /* Sidebar Styles */
@@ -218,8 +218,7 @@
 
     .colorido {
         color: #1e90ff;
-        margin-left: 13px;
-    
+        
     
 }
 

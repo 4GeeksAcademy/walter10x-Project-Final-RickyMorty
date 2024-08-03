@@ -52,7 +52,7 @@
 
 
 .card-actions .btn:hover {
-    background-color: #61dafb; /* Change the background color on hover */
+    background-color: #61dafb; 
     color: #fff; /* Change text color on hover */
     transform: scale(1.05); /* Slightly increase the size on hover */
 }

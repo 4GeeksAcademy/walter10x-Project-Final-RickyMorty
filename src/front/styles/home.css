@@ -1,5 +1,7 @@
+
+
 .home-container {
-  background-color: #ffffff;
+  background: linear-gradient(45deg, #303031, #2c2c2c);
   color: #532cd9;
   min-height: 100vh;
   display: flex;
