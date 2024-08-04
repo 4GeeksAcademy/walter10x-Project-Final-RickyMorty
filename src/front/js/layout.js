@@ -9,6 +9,7 @@ import { Single } from "./pages/single";
 import { Characters } from "./pages/Characters";
 import { Locations } from "./pages/Locations";
 import { Episodes } from "./pages/Episodes";
+
 import { Favorites } from "./pages/Favorites";
 import { Profile } from "./pages/Profile";
 import { SignUpPage } from "./pages/SignUpPage"; 

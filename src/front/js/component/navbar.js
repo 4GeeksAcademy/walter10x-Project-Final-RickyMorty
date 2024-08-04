@@ -15,7 +15,7 @@ export const Navbar = () => {
 
     const handleLogout = () => {
         actions.logout();
-        navigate("/login");
+        navigate("/");
     };
 
     return (

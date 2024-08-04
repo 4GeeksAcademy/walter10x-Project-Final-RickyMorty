@@ -1,24 +1,26 @@
-.login-container {
+/* Contenedor principal */
+login-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
   padding: 10px;
   /* background: linear-gradient(45deg, #0a0a0a, #7b5ee8, #0a0a0a); */
   font-family: 'Arial', sans-serif;
-  
-  
 }
 
+/* Estilo del contenedor del formulario */
 .login-form-wrapper {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 30px;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
-  width: 310px;
-  
+  width: 100%; /* Permite que el contenedor se ajuste al tamaño de la pantalla */
+  max-width: 400px; /* Limita el ancho máximo para pantallas más grandes */
 }
 
+/* Estilo del título del formulario */
 .login-title-container {
   text-align: center;
   margin-bottom: 20px;
@@ -33,16 +35,19 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+/* Estilo del formulario */
 .login-form {
   display: flex;
   flex-direction: column;
 }
 
+/* Estilo de los grupos de entrada */
 .input-group {
   margin-bottom: 15px;
   position: relative;
 }
 
+/* Estilo de las entradas */
 .login-input {
   width: 100%;
   padding: 10px;
@@ -63,6 +68,7 @@
   color: rgba(255, 255, 255, 0.5);
 }
 
+/* Estilo del botón de inicio de sesión */
 .login-button {
   background: linear-gradient(45deg, #0a0a0a, #7b5ee8, #0a0a0a);
   color: #fff;
@@ -74,6 +80,8 @@
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
+  width: 100%; /* Asegura que el botón ocupe todo el ancho disponible */
+  max-width: 339px; /* Limita el ancho máximo del botón */
 }
 
 .login-button:hover {
@@ -82,6 +90,7 @@
   box-shadow: 0 5px 15px rgba(0, 176, 200, 0.4);
 }
 
+/* Estilo del mensaje de error */
 .login-error-message {
   color: #ff6b6b;
   text-align: center;
@@ -89,6 +98,7 @@
   font-size: 14px;
 }
 
+/* Estilo del enlace de registro */
 .login-register-link {
   text-align: center;
   margin-top: 15px;
@@ -108,9 +118,10 @@
   text-decoration: underline;
 }
 
-@media (max-width: 340px) {
+/* Media queries para pantallas pequeñas */
+@media (max-width: 576px) {
   .login-form-wrapper {
-    width: 100%;
+    width: 90%; /* Asegura que el formulario se ajuste bien en pantallas más pequeñas */
     padding: 20px;
   }
 
@@ -121,5 +132,6 @@
   .login-input,
   .login-button {
     padding: 8px;
+    font-size: 14px;
   }
 }

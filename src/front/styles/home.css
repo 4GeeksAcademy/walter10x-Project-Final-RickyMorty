@@ -6,6 +6,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  padding-left: 150px;
 }
 
 .main-content {
@@ -75,6 +76,7 @@
   color: white;
   width: calc(33.333% - 20px);
   min-width: 250px;
+  cursor: pointer;
 }
 
 .info-card:hover, .info-card.hovered {
@@ -124,6 +126,7 @@
 .cta-button:hover {
   background-color: #f0f0f0;
   color: #532cd9;
+  
 }
 
 @media (max-width: 768px) {
@@ -147,10 +150,13 @@
   
   .hero-subtitle {
     font-size: 0.9rem;
+    cursor: pointer;
   }
   
   .info-card {
     width: 100%;
+    cursor: pointer;
+    
   }
   
   .card-icon {
