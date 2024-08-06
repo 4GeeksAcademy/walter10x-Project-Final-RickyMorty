@@ -2,7 +2,7 @@
     width: 100%;
     max-width: 300px;
     margin: 0 auto;
-    background: linear-gradient(45deg, #0a0a0a, #7b5ee8, #0a0a0a);
+    background: linear-gradient(45deg, #0a0a0a, #4d4c4e, #0a0a0a);
     border: 1px solid #ddd;
     border-radius: 10px;
     overflow: hidden;
@@ -52,7 +52,7 @@
 
 
 .card-actions .btn:hover {
-    background-color: #61dafb; 
+    background: linear-gradient(45deg, #0a0a0a, #4d4c4e, #0a0a0a);
     color: #fff; /* Change text color on hover */
     transform: scale(1.05); /* Slightly increase the size on hover */
 }

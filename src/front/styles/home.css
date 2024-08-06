@@ -20,7 +20,7 @@
 .hero-section {
   text-align: center;
   padding: 50px 20px;
-  background: linear-gradient(45deg, #0a0a0a, #7b5ee8, #0a0a0a);
+  background: linear-gradient(45deg, #0a0a0a, #4d4c4e, #0a0a0a);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   color: #ffffff;
@@ -67,7 +67,7 @@
 }
 
 .info-card {
-  background: linear-gradient(45deg, #0a0a0a, #7b5ee8, #0a0a0a);
+  background: linear-gradient(45deg, #0a0a0a, #4d4c4e, #0a0a0a);
   border: 2px solid #0f0f0f;
   border-radius: 10px;
   padding: 20px;
@@ -103,7 +103,7 @@
 .cta-section {
   text-align: center;
   padding: 50px 20px;
-  background: linear-gradient(45deg, #0a0a0a, #7b5ee8, #0a0a0a);
+  background: linear-gradient(45deg, #0a0a0a, #4d4c4e, #0a0a0a);
   color: #ffffff;
   border: 2px solid #0f0f0f;
   border-radius: 10px;
@@ -114,7 +114,7 @@
 
 .cta-button {
   background-color: #ffffff;
-  color: #532cd9;
+  color: #fdfcff;
   border: none;
   padding: 10px 20px;
   font-size: 1.2rem;
@@ -125,7 +125,7 @@
 
 .cta-button:hover {
   background-color: #f0f0f0;
-  color: #532cd9;
+  color: #eeecf5;
   
 }
 

@@ -1,0 +1,69 @@
+/* src/styles/profile.css */
+
+.profile-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(45deg, #303031, #2c2c2c);
+    min-height: 100vh;
+}
+
+.profile {
+    background: linear-gradient(45deg, #0a0a0a, #4d4c4e, #0a0a0a);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    width: 100%;
+    max-width: 400px;
+}
+
+.profile h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.profile-form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.profile-info p {
+    margin: 10px 0;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(45deg, #0a0a0a, #7b5ee8, #0a0a0a);
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: linear-gradient(45deg, #0a0a0a, #484849, #0a0a0a);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .profile {
+        width: 90%;
+        margin-left: 35px;
+    }
+
+}

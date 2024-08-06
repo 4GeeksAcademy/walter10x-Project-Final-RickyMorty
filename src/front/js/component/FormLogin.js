@@ -15,10 +15,10 @@ export const FormLogin = () => {
     setError('');
     const success = await actions.login(email, password);
     if (success) {
-      console.log("Login successful");
+     // console.log("Login successful");
       navigate("/");
     } else {
-      console.log("Login failed");
+      //console.log("Login failed");
       setError("Invalid email or password");
     }
   };

@@ -9,14 +9,14 @@ export const Locations = () => {
 
   useEffect(() => {
     const fetchLocations = async () => {
-      console.log("Fetching locations..."); // Log cuando empieza a buscar
+    //  console.log("Fetching locations..."); // Log cuando empieza a buscar
       await actions.getLocations();
-      console.log("Locations fetched:", store.locations); // Log para verificar los datos
+      //console.log("Locations fetched:", store.locations); // Log para verificar los datos
       setLocations(store.locations);
     };
 
     fetchLocations();
-  }, [actions, store.locations]);
+  }, []);
 
   return (
     <div className="locations-page">

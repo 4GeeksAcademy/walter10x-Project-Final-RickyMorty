@@ -34,7 +34,7 @@ export const Characters = () => {
             await actions.addFavorite(character);
             await actions.getCharacters();
         } catch (error) {
-            console.error('Error adding favorite:', error);
+           // console.error('Error adding favorite:', error);
         }
     };
 
@@ -43,7 +43,7 @@ export const Characters = () => {
             await actions.removeFavorite(characterId);
             await actions.getCharacters();
         } catch (error) {
-            console.error('Error removing favorite:', error);
+           // console.error('Error removing favorite:', error);
         }
     };
 

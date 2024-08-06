@@ -1,6 +1,6 @@
 .locations-page {
     min-height: 100vh;
-    background: linear-gradient(45deg, #303031, #2c2c2c);
+    background: linear-gradient(45deg, #0a0a0a, #4d4c4e, #0a0a0a);
     padding: 20px;
     display: flex;
     flex-direction: column;

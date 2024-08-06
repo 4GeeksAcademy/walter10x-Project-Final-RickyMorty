@@ -283,3 +283,43 @@ def get_locations():
     locations = response.json().get('results', [])
 
     return jsonify(locations), 200
+
+@api.route('/users/profile', methods=['GET'])
+@jwt_required()
+def get_profile():
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({'error': 'User not found'}), 404
+    return jsonify({
+        'id': user.id,
+        'first_name': user.first_name,
+        'last_name': user.last_name,
+        'email': user.email
+    }), 200
+
+
+@api.route('/users/profile', methods=['PUT'])
+@jwt_required()
+def update_profile():
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({'error': 'User not found'}), 404
+    
+    data = request.json
+    user.first_name = data.get('first_name', user.first_name)
+    user.last_name = data.get('last_name', user.last_name)
+    user.email = data.get('email', user.email)
+    
+    # Handle password update carefully
+    if 'password' in data:
+        user.password = data['password']
+    
+    db.session.commit()
+    return jsonify({
+        'id': user.id,
+        'first_name': user.first_name,
+        'last_name': user.last_name,
+        'email': user.email
+    }), 200

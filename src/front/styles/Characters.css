@@ -11,7 +11,7 @@ body {
 
 .characters-container {
   padding: 2rem;
-  
+  background: linear-gradient(45deg, #0a0a0a, #4d4c4e, #0a0a0a);
   text-align: center;
   max-width: 100%;
   max-height: 100%;
@@ -35,10 +35,11 @@ body {
     gap: 1rem;
     justify-items: center;
     
+    
 }
 
 .character-card {
-    background-color: #282c34;
+  background: linear-gradient(45deg, #0a0a0a, #4d4c4e, #0a0a0a);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 1rem;
@@ -57,7 +58,7 @@ button, input, optgroup, select, textarea {
     line-height: 1.5;
     width: 30%;
     padding: 12px 15px;
-    border: 2px solid #7b5ee8;
+    border: 2px solid #5b5a5f;
     border-radius: 25px;
     background-color: rgba(255, 255, 255, 0.1);
     color: #fff;

@@ -15,7 +15,7 @@ export const Episodes = () => {
     };
 
     fetchEpisodes();
-  }, [actions, store.episodes]);
+  }, []);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);

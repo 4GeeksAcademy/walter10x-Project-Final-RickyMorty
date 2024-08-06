@@ -11,7 +11,7 @@ import { Locations } from "./pages/Locations";
 import { Episodes } from "./pages/Episodes";
 
 import { Favorites } from "./pages/Favorites";
-import { Profile } from "./pages/Profile";
+import { ProfilePage } from "./pages/ProfilePage";
 import { SignUpPage } from "./pages/SignUpPage"; 
 import { CharacterDetailPage } from "./pages/CharacterDetailPage";
 
@@ -45,7 +45,7 @@ const Layout = () => {
                             <Route path="/locations" element={<Locations />} />
                             <Route path="/episodes" element={<Episodes />} />
                             <Route path="/favorites" element={<Favorites />} />
-                            <Route path="/profile" element={<Profile />} />
+                            <Route path="/profilePage" element={<ProfilePage />} />
                         </Route>
                         <Route path="/signup" element={<SignUpPage />} /> 
                         <Route path="/character/:characterId" element={<CharacterDetailPage />} />

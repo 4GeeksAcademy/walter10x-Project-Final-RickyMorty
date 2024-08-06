@@ -20,19 +20,24 @@ export const Navbar = () => {
 
     return (
         <div className="App">
-           
             <div className={`sidebar ${isSidebarOpen ? "open" : "closed"}`}>
                 <div className="sidebar-header">
                     {/* Sidebar header content */}
                 </div>
                 <div className="sidebar-body">
                     <ul className="navbar-nav">
-                        <li className="colorido " type="button" onClick={toggleSidebar}>
+                        <li className="colorido" type="button" onClick={toggleSidebar}>
                             <i className="nav-item fw-bold my-4 ps-2 fa-solid fa-bars fs-3 ms-4 fs-5" aria-hidden="true"></i>
                             {isSidebarOpen && <span className="ms-3 fs-5 white">Menu</span>}
                         </li>
                         <li className="nav-item fw-bold my-4 ps-2">
-                            <Link to="/profile" className="nav-link active colorido2 marnav">
+                            <Link to="/" className="nav-link active colorido2 marnav">
+                                <i className="fa-solid fa-home fs-3"></i>
+                                {isSidebarOpen && <span className="ms-4 fs-6">Home</span>}
+                            </Link>
+                        </li>
+                        <li className="nav-item fw-bold my-4 ps-2">
+                            <Link to="/ProfilePage" className="nav-link active colorido2 marnav">
                                 <i className="fa-solid fa-user fs-3"></i>
                                 {isSidebarOpen && <span className="ms-4 fs-6">Profile</span>}
                             </Link>

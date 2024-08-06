@@ -39,16 +39,16 @@ const getState = ({ getStore, getActions, setStore }) => {
                         const data = await response.json();
                         localStorage.setItem("token", data.access_token);
                         setStore({ token: data.access_token, auth: true });
-                        console.log("Login successful, token:", data.access_token);
+                       // console.log("Login successful, token:", data.access_token);
                         return true; // Login successful
                     } else {
                         const errorData = await response.json();
-                        console.log("Login failed:", errorData);
+                       // console.log("Login failed:", errorData);
                         setStore({ auth: false });
                         return false; // Login failed
                     }
                 } catch (error) {
-                    console.error("Login error:", error);
+                    //console.error("Login error:", error);
                     setStore({ auth: false });
                     return false; // Login failed
                 }
@@ -63,10 +63,10 @@ const getState = ({ getStore, getActions, setStore }) => {
                 const token = localStorage.getItem('token');
                 if (token) {
                     setStore({ auth: true, token: token });
-                    console.log("User is authenticated, token:", token);
+                 //   console.log("User is authenticated, token:", token);
                 } else {
                     setStore({ auth: false, token: null });
-                    console.log("User is not authenticated");
+                   // console.log("User is not authenticated");
                 }
             },
 
@@ -77,22 +77,22 @@ const getState = ({ getStore, getActions, setStore }) => {
                     body: JSON.stringify({ first_name: firstName, last_name: lastName, email, password })
                 };
                 try {
-                    console.log("Attempting sign up with", { first_name: firstName, last_name: lastName, email, password });
+                   // console.log("Attempting sign up with", { first_name: firstName, last_name: lastName, email, password });
                     const response = await fetch(process.env.BACKEND_URL + "/api/signup", requestOptions);
-                    console.log("Response status:", response.status);
+                   // console.log("Response status:", response.status);
                     if (response.ok) {
                         const data = await response.json();
-                        console.log("Response data:", data);
+                       // console.log("Response data:", data);
                         setStore({ message: "User created successfully" });
                         return true;
                     } else {
                         const errorData = await response.json();
-                        console.log('Sign up failed:', errorData);
+                        //console.log('Sign up failed:', errorData);
                         setStore({ message: errorData.msg || "Sign up failed" });
                         return false;
                     }
                 } catch (error) {
-                    console.log('Sign up error:', error);
+                   // console.log('Sign up error:', error);
                     setStore({ message: "Sign up error" });
                     return false;
                 }
@@ -115,10 +115,10 @@ const getState = ({ getStore, getActions, setStore }) => {
                         setStore({ characters: data });
                     } else {
                         const errorData = await response.json();
-                        console.error('Error response:', errorData);
+                       // console.error('Error response:', errorData);
                     }
                 } catch (error) {
-                    console.error('Error fetching characters:', error);
+                   // console.error('Error fetching characters:', error);
                 }
             },
             
@@ -129,11 +129,11 @@ const getState = ({ getStore, getActions, setStore }) => {
                         const data = await response.json();
                         return data;
                     } else {
-                        console.error("Failed to fetch character details");
+                      //  console.error("Failed to fetch character details");
                         return null;
                     }
                 } catch (error) {
-                    console.error("Error fetching character details:", error);
+                  //  console.error("Error fetching character details:", error);
                     return null;
                 }
             },
@@ -146,7 +146,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 }
             
                 try {
-                  console.log("Fetching locations from API..."); // Log cuando empieza a buscar
+                 // console.log("Fetching locations from API..."); // Log cuando empieza a buscar
                   const response = await fetch(process.env.BACKEND_URL + '/api/locations', {
                     headers: {
                       'Authorization': `Bearer ${store.token}`
@@ -155,13 +155,13 @@ const getState = ({ getStore, getActions, setStore }) => {
             
                   if (response.ok) {
                     const data = await response.json();
-                    console.log("Locations data received:", data); // Log para verificar los datos
+                  //  console.log("Locations data received:", data); // Log para verificar los datos
                     setStore({ locations: data }); // Asegúrate de que `data` tiene el formato esperado
                   } else {
-                    console.error("Failed to fetch locations:", response.status);
+                  //  console.error("Failed to fetch locations:", response.status);
                   }
                 } catch (error) {
-                  console.error('Error fetching locations:', error);
+                //  console.error('Error fetching locations:', error);
                 }
               },
             
@@ -190,7 +190,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 if (!store.token) return;
             
                 try {
-                    console.log('Fetching favorites from backend...');
+                  //  console.log('Fetching favorites from backend...');
                     const response = await fetch(process.env.BACKEND_URL + '/api/favorites/characters', {
                         headers: {
                             'Authorization': `Bearer ${store.token}`
@@ -198,15 +198,15 @@ const getState = ({ getStore, getActions, setStore }) => {
                     });
                     if (response.ok) {
                         const data = await response.json();
-                        console.log('Favorites data:', data);
+                     //   console.log('Favorites data:', data);
                         setStore({ favorites: data });
                     } else {
                         const errorData = await response.json();
-                        console.error('Error response:', errorData);
+                      //  console.error('Error response:', errorData);
                         setStore({ favorites: [] });
                     }
                 } catch (error) {
-                    console.error('Error fetching favorites:', error);
+                   // console.error('Error fetching favorites:', error);
                     setStore({ favorites: [] });
                 }
             },
@@ -235,10 +235,10 @@ const getState = ({ getStore, getActions, setStore }) => {
                         setStore({ favorites: [...(store.favorites || []), data] });
                     } else {
                         const errorData = await response.json();
-                        console.error('Error response:', errorData);
+                       // console.error('Error response:', errorData);
                     }
                 } catch (error) {
-                    console.error('Error adding favorite:', error);
+                   // console.error('Error adding favorite:', error);
                 }
             },
             
@@ -262,10 +262,10 @@ const getState = ({ getStore, getActions, setStore }) => {
                       //  await actions.getCharacters(); // Llama a getCharacters para actualizar la lista de personajes
                     } else {
                         const errorData = await response.json();
-                        console.error('Error response:', errorData);
+                       // console.error('Error response:', errorData);
                     }
                 } catch (error) {
-                    console.error('Error removing favorite:', error);
+                 //   console.error('Error removing favorite:', error);
                 }
             },
             
@@ -286,12 +286,70 @@ const getState = ({ getStore, getActions, setStore }) => {
                         setStore({ favorites: [] });
                     } else {
                         const errorData = await response.json();
-                        console.error('Error removing all favorites:', errorData);
+                      //  console.error('Error removing all favorites:', errorData);
                     }
                 } catch (error) {
-                    console.error('Error removing all favorites:', error);
+                  //  console.error('Error removing all favorites:', error);
                 }
             },
+
+            
+            getProfile: async () => {
+                const store = getStore();
+                if (!store.token) return;
+        
+                try {
+                    const response = await fetch(`${process.env.BACKEND_URL}/api/users/profile`, {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': `Bearer ${store.token}`
+                        }
+                    });
+        
+                    if (response.ok) {
+                        const data = await response.json();
+                        setStore({ user: data });
+                    } else {
+                        // Manejo de errores si la respuesta no es OK
+                        const errorData = await response.json();
+                        console.error('Error fetching profile:', errorData);
+                        // Opcional: Mostrar un mensaje de error al usuario
+                    }
+                } catch (error) {
+                  //  console.error('Error fetching profile:', error);
+                    // Opcional: Mostrar un mensaje de error al usuario
+                }
+            },
+        
+            updateProfile: async (userId, formData) => {
+                const store = getStore();
+                if (!store.token) return;
+        
+                try {
+                    const response = await fetch(`${process.env.BACKEND_URL}/api/users/${userId}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Authorization': `Bearer ${store.token}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+        
+                    if (response.ok) {
+                        const updatedUser = await response.json();
+                        setStore({ user: updatedUser });
+                    } else {
+                        // Manejo de errores si la respuesta no es OK
+                        const errorData = await response.json();
+                      //  console.error('Error updating profile:', errorData);
+                        // Opcional: Mostrar un mensaje de error al usuario
+                    }
+                } catch (error) {
+                //    console.error('Error updating profile:', error);
+                    // Opcional: Mostrar un mensaje de error al usuario
+                }
+            },
+        
 
             
 
