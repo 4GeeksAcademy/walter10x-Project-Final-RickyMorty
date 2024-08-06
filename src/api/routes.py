@@ -268,3 +268,18 @@ def get_episodes():
     if response.status_code != 200:
         return jsonify({"msg": "Error fetching episodes"}), response.status_code
     return jsonify(response.json()), 200
+
+@api.route('/locations', methods=['GET'])
+@jwt_required()
+def get_locations():
+    """
+    Endpoint para obtener la lista de ubicaciones.
+    """
+    # Obtener ubicaciones de la API externa
+    response = requests.get(RICKY_MORTY_API["locations"])
+    if response.status_code != 200:
+        return jsonify({"msg": "Error fetching locations"}), response.status_code
+
+    locations = response.json().get('results', [])
+
+    return jsonify(locations), 200

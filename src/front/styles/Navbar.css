@@ -110,6 +110,7 @@
 
 .sidebar.closed {
     transform: translateX(-30%); /* Ajusta esto para mostrar el 30% de la barra lateral por defecto */
+    margin-left: 10px;
 }
 
 .sidebar-header {
@@ -253,6 +254,10 @@
 }
 
 
+*, ::after, ::before {
+    box-sizing: border-box;
+    margin-left: 0;
+}
 
 
 

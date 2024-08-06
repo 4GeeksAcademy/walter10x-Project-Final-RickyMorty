@@ -138,25 +138,33 @@ const getState = ({ getStore, getActions, setStore }) => {
                 }
             },
             
-
             getLocations: async () => {
                 const store = getStore();
-                if (!store.token) return;
-
-                try {
-                    const response = await fetch(process.env.BACKEND_URL + '/api/locations', {
-                        headers: {
-                            'Authorization': `Bearer ${store.token}`
-                        }
-                    });
-                    if (response.ok) {
-                        const data = await response.json();
-                        setStore({ locations: data.results });
-                    }
-                } catch (error) {
-                    console.error('Error fetching locations:', error);
+                if (!store.token) {
+                  console.log("No token found.");
+                  return;
                 }
-            },
+            
+                try {
+                  console.log("Fetching locations from API..."); // Log cuando empieza a buscar
+                  const response = await fetch(process.env.BACKEND_URL + '/api/locations', {
+                    headers: {
+                      'Authorization': `Bearer ${store.token}`
+                    }
+                  });
+            
+                  if (response.ok) {
+                    const data = await response.json();
+                    console.log("Locations data received:", data); // Log para verificar los datos
+                    setStore({ locations: data }); // Asegúrate de que `data` tiene el formato esperado
+                  } else {
+                    console.error("Failed to fetch locations:", response.status);
+                  }
+                } catch (error) {
+                  console.error('Error fetching locations:', error);
+                }
+              },
+            
 
             getEpisodes: async () => {
                 const store = getStore();
@@ -182,6 +190,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 if (!store.token) return;
             
                 try {
+                    console.log('Fetching favorites from backend...');
                     const response = await fetch(process.env.BACKEND_URL + '/api/favorites/characters', {
                         headers: {
                             'Authorization': `Bearer ${store.token}`
@@ -189,13 +198,16 @@ const getState = ({ getStore, getActions, setStore }) => {
                     });
                     if (response.ok) {
                         const data = await response.json();
-                        setStore({ favorites: data.results });
+                        console.log('Favorites data:', data);
+                        setStore({ favorites: data });
                     } else {
                         const errorData = await response.json();
                         console.error('Error response:', errorData);
+                        setStore({ favorites: [] });
                     }
                 } catch (error) {
                     console.error('Error fetching favorites:', error);
+                    setStore({ favorites: [] });
                 }
             },
             

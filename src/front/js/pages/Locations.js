@@ -1,34 +1,35 @@
-// src/pages/Locations.js
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Context } from "../store/appContext";
-import "../../styles/Locations.css"; // Importa el CSS
+import { LocationCard } from "../component/LocationCard";
+import "../../styles/locations.css";
 
 export const Locations = () => {
-    const { store, actions } = useContext(Context);
+  const { store, actions } = useContext(Context);
+  const [locations, setLocations] = useState([]);
 
-    useEffect(() => {
-        actions.getLocations();
-    }, [actions]);
+  useEffect(() => {
+    const fetchLocations = async () => {
+      console.log("Fetching locations..."); // Log cuando empieza a buscar
+      await actions.getLocations();
+      console.log("Locations fetched:", store.locations); // Log para verificar los datos
+      setLocations(store.locations);
+    };
 
-    return (
-        <div className="locations-page">
-            <h1>Locations</h1>
-            <div className="locations-list">
-                {store.locations.length > 0 ? (
-                    <ul>
-                        {store.locations.map((location, index) => (
-                            <li key={index}>
-                                <h2>{location.name}</h2>
-                                <p>Type: {location.type}</p>
-                                <p>Dimension: {location.dimension}</p>
-                                <p>Residents: {location.residents.length}</p>
-                            </li>
-                        ))}
-                    </ul>
-                ) : (
-                    <p>No locations found.</p>
-                )}
-            </div>
-        </div>
-    );
+    fetchLocations();
+  }, [actions, store.locations]);
+
+  return (
+    <div className="locations-page">
+      <h1 id="mpp" className="locations-title">Locations</h1>
+      <div className="locations-list">
+        {locations.length > 0 ? (
+          locations.map((location, index) => (
+            <LocationCard key={index} location={location} />
+          ))
+        ) : (
+          <p>No locations available.</p>
+        )}
+      </div>
+    </div>
+  );
 };

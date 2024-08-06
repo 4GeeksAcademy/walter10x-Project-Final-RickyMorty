@@ -1,0 +1,52 @@
+.location-card {
+    background: linear-gradient(45deg, #0a0a0a, #7b5ee8, #0a0a0a);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 90%;
+    margin-left: 17px;
+}
+
+.location-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.location-name {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.location-info {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .location-name {
+        font-size: 1.2rem;
+    }
+
+    .location-info {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .location-name {
+        font-size: 1rem;
+    }
+
+    .location-info {
+        font-size: 0.8rem;
+    }
+}
+
