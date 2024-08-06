@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Context } from '../store/appContext';
 import '../../styles/FormSignup.css';
+import { useNavigate } from 'react-router-dom'; // Importa useNavigate
 
 export const FormSignUp = () => {
   const { actions } = useContext(Context);
@@ -9,6 +10,7 @@ export const FormSignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate(); // Inicializa useNavigate
 
   const handleSignUp = async (event) => {
     event.preventDefault();
@@ -21,6 +23,11 @@ export const FormSignUp = () => {
       console.log("Sign Up failed");
       setError("Error signing up. Please try again.");
     }
+  };
+
+  const handleCancel = () => {
+    // Redirige al usuario a la página principal o a donde desees
+    navigate('/');
   };
 
   return (
@@ -70,14 +77,16 @@ export const FormSignUp = () => {
               required
             />
           </div>
-          <button className="signup-button" type="submit">
-            Sign Up
-          </button>
-           
-          
+          <div className="button-group">
+            <button className="signup-button" type="submit">
+              Sign Up
+            </button>
+            <button className="cancel-button" type="button" onClick={handleCancel}>
+              Cancel
+            </button>
+          </div>
         </form>
         {error && <p className="signup-error-message">{error}</p>}
-        
       </div>
     </div>
   );

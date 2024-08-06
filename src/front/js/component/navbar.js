@@ -75,7 +75,7 @@ export const Navbar = () => {
                             </li>
                         ) : (
                             <li className="nav-item fw-bold ps-2 my-4">
-                                <Link to="/login" className="nav-link active">
+                                <Link to="/" className="nav-link active">
                                     <i className="fa-solid fa-sign-in-alt fs-3"></i>
                                     {isSidebarOpen && <span className="ms-4 fs-6">Login</span>}
                                 </Link>

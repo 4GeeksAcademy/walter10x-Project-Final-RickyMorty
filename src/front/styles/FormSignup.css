@@ -5,16 +5,18 @@
   min-height: 100vh;
  
   font-family: 'Arial', sans-serif;
+  
 }
 
 .signup-form-wrapper {
-  background: linear-gradient(45deg, #0a0a0a, #7b5ee8, #0a0a0a);
+  background: linear-gradient(45deg, #0a0a0a, #4d4c4e, #0a0a0a);
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 40px;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
   max-width: 400px;
   width: 90%;
+  margin-left: 38px;
 }
 
 .signup-title-container {
@@ -24,11 +26,16 @@
 
 .signup-title {
   color: #ffffff;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 3px;
   margin: 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  width: 120%;
+  margin-left: -40px;
+  padding-left: 40px;
+  padding-right: 40px;
+  font-weight: bold;
 }
 
 .signup-form {
@@ -54,7 +61,7 @@
 
 .signup-input:focus {
   outline: none;
-  box-shadow: 0 0 10px rgba(0, 176, 200, 0.5);
+  box-shadow: 0 0 10px rgba(67, 68, 68, 0.5);
 }
 
 .signup-input::placeholder {
@@ -62,7 +69,7 @@
 }
 
 .signup-button {
-  background: linear-gradient(45deg, #0a0a0a, #7b5ee8, #0a0a0a);
+  background: linear-gradient(45deg, #0a0a0a, #4d4c4e, #0a0a0a);
   color: #fff;
   border: none;
   padding: 15px;
@@ -75,9 +82,9 @@
 }
 
 .signup-button:hover {
-  background: #008c9e;
+  background: linear-gradient(45deg, #0a0a0a, #4d4c4e, #0a0a0a);
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 176, 200, 0.4);
+  background: linear-gradient(45deg, #0a0a0a, #4d4c4e, #0a0a0a);
 }
 
 .signup-error-message {
@@ -99,4 +106,8 @@
   .signup-button {
     padding: 12px;
   }
+}
+
+.cancel-button {
+  background: linear-gradient(45deg, #0a0a0a, #4d4c4e, #0a0a0a);
 }
