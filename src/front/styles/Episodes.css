@@ -1,0 +1,52 @@
+.episodes-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(45deg, #303031, #2c2c2c);
+    min-height: 100vh;
+    padding-top: 60px;
+    margin-left: 60px;
+}
+  .episodes-title {
+    color: #ffffff;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+  }
+  
+  .episodes-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    width: 50%;
+    max-width: 1200px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .episodes-title {
+      font-size: 1rem;
+      font-weight: bold;
+    }
+  
+    .episodes-list {
+      gap: 15px;
+    }
+  }
+  
+  @media (max-width: 380px) {
+    .episodes-title {
+      font-size: 1.5rem;
+    }
+  
+    .episodes-list {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 10px;
+    }
+  }
+  

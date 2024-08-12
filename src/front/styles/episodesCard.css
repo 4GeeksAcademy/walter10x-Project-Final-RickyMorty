@@ -1,0 +1,68 @@
+.episode-card {
+  background: linear-gradient(45deg, #0a0a0a, #484849, #0a0a0a);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    color: #383636;
+    font-family: 'Arial', sans-serif;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200px; /* Establece una altura fija para todas las tarjetas */
+    width: 100%; /* Asegura que las tarjetas llenen su contenedor */
+  }
+  
+  .episode-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  }
+  
+  .episode-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color:aliceblue
+  }
+  
+  .episode-info {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .episode-card {
+      padding: 15px;
+      height: 150px; /* Reduce la altura para pantallas medianas */
+    }
+  
+    .episode-title {
+      font-size: 1.3rem;
+    }
+  
+    .episode-info {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .episode-card {
+      padding: 10px;
+      height: 120px; /* Reduce la altura para pantallas pequeñas */
+    }
+  
+    .episode-title {
+      font-size: 1.1rem;
+    }
+  
+    .episode-info {
+      font-size: 0.8rem;
+    }
+  }
+  

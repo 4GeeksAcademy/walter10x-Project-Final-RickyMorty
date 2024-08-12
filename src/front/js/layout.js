@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
@@ -6,32 +6,50 @@ import { BackendURL } from "./component/backendURL";
 import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
+import { Characters } from "./pages/Characters";
+import { Locations } from "./pages/Locations";
+import { Episodes } from "./pages/Episodes";
 
-import injectContext from "./store/appContext";
+import { Favorites } from "./pages/Favorites";
+import { ProfilePage } from "./pages/ProfilePage";
+import { SignUpPage } from "./pages/SignUpPage"; 
+import { CharacterDetailPage } from "./pages/CharacterDetailPage";
 
-//import { Navbar } from "./component/navbar";
+import { Navbar } from "./component/navbar"; // Importar la barra de navegación
+import { PrivateRoute } from "./component/PrivateRoute";
+import injectContext, { Context } from "./store/appContext";
 
 import { Footer } from "./component/footer";
 
-//create your first component
 const Layout = () => {
-    //the basename is used when your project is published in a subdirectory and not in the root of the domain
-    // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
     const basename = process.env.BASENAME || "";
+    const { actions } = useContext(Context);
 
-    if(!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return <BackendURL/ >;
+    useEffect(() => {
+        actions.checkAuth();
+    }, []);
+
+    if (!process.env.BACKEND_URL || process.env.BACKEND_URL === "") return <BackendURL />;
 
     return (
         <div>
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
-                 
-                    
+                    <Navbar /> {/* Agregar la barra de navegación aquí */}
                     <Routes>
-                        <Route element={<Home />} path="/" />
-                        <Route element={<Demo />} path="/demo" />
-                        <Route element={<Single />} path="/single/:theid" />
-                        <Route element={<h1>Not found!</h1>} />
+                        <Route path="/" element={<Home />} />
+                        <Route path="/demo" element={<Demo />} />
+                        <Route path="/single/:theid" element={<Single />} />
+                        <Route element={<PrivateRoute />}>
+                            <Route path="/characters" element={<Characters />} />
+                            <Route path="/locations" element={<Locations />} />
+                            <Route path="/episodes" element={<Episodes />} />
+                            <Route path="/favorites" element={<Favorites />} />
+                            <Route path="/profilePage" element={<ProfilePage />} />
+                        </Route>
+                        <Route path="/signup" element={<SignUpPage />} /> 
+                        <Route path="/character/:characterId" element={<CharacterDetailPage />} />
+                        <Route path="*" element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
                 </ScrollToTop>

@@ -1,0 +1,59 @@
+.card {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    background: linear-gradient(45deg, #0a0a0a, #4d4c4e, #0a0a0a);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 1rem;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.card-text {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.card-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.card-actions .btn {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    border-radius: 5px;
+    background: linear-gradient(45deg, #0a0a0a, #7b5ee8, #0a0a0a);
+}
+
+
+.card-actions .btn:hover {
+    background: linear-gradient(45deg, #0a0a0a, #4d4c4e, #0a0a0a);
+    color: #fff; /* Change text color on hover */
+    transform: scale(1.05); /* Slightly increase the size on hover */
+}
+

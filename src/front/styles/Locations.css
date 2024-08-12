@@ -1,0 +1,58 @@
+/* src/styles/Locations.css */
+
+/* Contenedor principal para la página de ubicaciones */
+.locations-page {
+    padding: 20px;
+    background-color: #f4f4f9; /* Color de fondo ligero para contraste */
+    min-height: 100vh; /* Asegura que la página ocupe toda la altura de la ventana */
+}
+
+/* Título de la página */
+.locations-page h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Contenedor para la lista de ubicaciones */
+.locations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio entre los elementos de la lista */
+    max-width: 1200px; /* Máxima anchura para un diseño más contenido */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+}
+
+/* Estilos para cada ítem de la lista de ubicaciones */
+.locations-list li {
+    background-color: #fff; /* Fondo blanco para los ítems */
+    border: 1px solid #ddd; /* Borde gris claro */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transición suave para efectos */
+}
+
+/* Efecto de hover para los ítems de la lista */
+.locations-list li:hover {
+    transform: translateY(-5px); /* Desplazamiento hacia arriba al pasar el ratón */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+}
+
+/* Estilos para los títulos de cada ítem */
+.locations-list h2 {
+    font-size: 1.5rem;
+    color: #555;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* Estilos para el texto dentro de cada ítem */
+.locations-list p {
+    font-size: 1rem;
+    color: #666;
+    margin: 5px 0; /* Espaciado entre párrafos */
+}

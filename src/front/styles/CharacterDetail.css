@@ -1,0 +1,171 @@
+.character-detail-page {
+    min-height: 100vh;
+    background: linear-gradient(45deg, #303031, #2c2c2c);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 60px; /* Margen izquierdo para pantallas grandes */
+}
+
+/* Ajustes para pantallas grandes */
+.character-detail-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.character-card {
+    background: linear-gradient(45deg, #0a0a0a, #4d4c4e, #0a0a0a);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    width: 90%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: row;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-left: 30px;
+    margin-top: 70px;
+}
+
+.character-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+}
+
+.character-image {
+    flex: 1;
+    max-width: 50%;
+}
+
+.character-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.character-info {
+    flex: 1;
+    padding: 30px;
+    color: #ffffff;
+}
+
+.character-name {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #fbffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.character-description {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #e0e0e0;
+}
+
+.info-item {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.info-label {
+    font-weight: bold;
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+.info-value {
+    color: #ffffff;
+}
+
+.status-alive {
+    color: #4CAF50;
+}
+
+.status-dead {
+    color: #F44336;
+}
+
+.status-unknown {
+    color: #FFC107;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-size: 1.5rem;
+    color: #00b0c8;
+    background: linear-gradient(45deg, #0a0a0a, #7b5ee8, #0a0a0a);
+}
+
+/* Ajustes para pantallas medianas */
+@media (max-width: 768px) {
+    .character-card {
+        flex-direction: column;
+        /* Comentario: Cambia la dirección del flex a columna para pantallas medianas */
+    }
+
+    .character-image {
+        max-width: 100%;
+        /* Comentario: La imagen ocupa el ancho completo en pantallas medianas */
+    }
+
+    .character-name {
+        font-size: 2rem;
+        /* Comentario: Tamaño de fuente reducido para pantallas medianas */
+    }
+
+    .info-item {
+        font-size: 1rem;
+        /* Comentario: Tamaño de fuente ajustado para pantallas medianas */
+    }
+
+    .welcome-title {
+        font-size: 2rem;
+        /* Comentario: Tamaño de fuente del título reducido en pantallas medianas */
+        color: #4CAF50;
+    }
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 480px) {
+    .character-card {
+        width: 85%;
+        margin-left: 95px;
+        /* Comentario: La tarjeta ocupa el ancho completo en pantallas pequeñas */
+    }
+
+    .character-image {
+        flex: 1;
+        max-width: 100%;
+        margin-left: 100px;
+        /* Comentario: Imagen de personaje ocupando el 100% del ancho en pantallas pequeñas */
+    }
+
+    .character-image img {
+        width: 55%; /* Haciendo la imagen 4 veces más pequeña */
+        height: auto; /* Mantiene la proporción de la imagen */
+        margin-left: -27px;
+    }
+
+    .character-name {
+        font-size: 1.5rem;
+        /* Comentario: Tamaño de fuente reducido aún más para pantallas pequeñas */
+    }
+
+    .character-description {
+        font-size: 0.9rem;
+        /* Comentario: Tamaño de fuente reducido para la descripción en pantallas pequeñas */
+    }
+
+    .info-item {
+        font-size: 0.9rem;
+        /* Comentario: Tamaño de fuente reducido para los elementos de información en pantallas pequeñas */
+    }
+}
