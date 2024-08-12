@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Context } from '../store/appContext';
 import '../../styles/FormSignup.css';
-import { useNavigate } from 'react-router-dom'; // Importa useNavigate
+import { useNavigate } from 'react-router-dom';
 
 export const FormSignUp = () => {
   const { actions } = useContext(Context);
@@ -10,23 +10,23 @@ export const FormSignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate(); // Inicializa useNavigate
+  const navigate = useNavigate();
 
   const handleSignUp = async (event) => {
     event.preventDefault();
     setError('');
     const success = await actions.signup(firstName, lastName, email, password);
     if (success) {
-      console.log("Sign Up successful");
-      // Aquí podrías redirigir al usuario o mostrar un mensaje de éxito
+      setError(`Bienvenido, ${email}!`);
+      setTimeout(() => {
+        navigate('/');
+      }, 4000); // Redirige después de 3 segundos
     } else {
-      console.log("Sign Up failed");
       setError("Error signing up. Please try again.");
     }
   };
 
   const handleCancel = () => {
-    // Redirige al usuario a la página principal o a donde desees
     navigate('/');
   };
 
